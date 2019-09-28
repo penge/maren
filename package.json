@@ -1,0 +1,33 @@
+{
+  "name": "maren",
+  "version": "1.0.0",
+  "author": "Pavel Bucka",
+  "description": "theme based markdown renderer",
+  "keywords": [
+    "markdown",
+    "md",
+    "render",
+    "html",
+    "theme",
+    "blog"
+  ],
+  "main": "index.js",
+  "bin": "./cli/maren.js",
+  "engines": {
+    "node": ">=10"
+  },
+  "repository": "penge/maren",
+  "homepage": "https://maren.io",
+  "license": "MIT",
+  "dependencies": {
+    "chokidar": "3.1.0",
+    "express": "4.17.1",
+    "fs-extra": "8.1.0",
+    "markdown-toc": "1.2.0",
+    "marked": "0.7.0",
+    "md5-file": "4.0.0",
+    "pug": "2.0.4",
+    "yaml-front-matter": "4.0.0",
+    "yargs": "14.0.0"
+  }
+}
