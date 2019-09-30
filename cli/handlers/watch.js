@@ -44,7 +44,7 @@ module.exports = async argv => {
     }
 
     if (event === 'unlink') {
-      await fse.remove(path);
+      await fse.remove(outputPath);
       console.log('DEL %s', outputPath);
     }
   });
