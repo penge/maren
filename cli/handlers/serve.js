@@ -9,13 +9,11 @@ module.exports = argv => {
 
   const root = path.join(cwd, '_build');
   const draft = path.join(cwd, 'draft');
-  const images = path.join(cwd, 'images');
   const notFound = path.join(root, '404.html');
 
   const app = express();
   app.use('/', express.static(root));
   app.use('/', express.static(draft));
-  app.use('/', express.static(images));
   app.use((req, res, next) => {
     res.status(404).sendFile(notFound);
   });

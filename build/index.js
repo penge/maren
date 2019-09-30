@@ -32,8 +32,8 @@ const reinit = async (cwd, theme) => {
 
   try {
     await fse.copy(
-      `${cwd}/images`,
-      `${cwd}/_build/images`);
+      `${cwd}/static`,
+      `${cwd}/_build/static`);
   } catch (e) {}
 
   let { name, location, template, options } = theme;

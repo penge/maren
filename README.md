@@ -31,6 +31,7 @@ Put theme files inside /themes/themeName/
 /documents/404.md
 /documents/my-first-article/index.md
 /draft/not-ready-article/index.md
+/static/images/some-image.png
 
 ╔═════════════════╗
 ║ [3] watch/serve ║
@@ -59,17 +60,9 @@ $ maren upload pavelbucka --html --dryrun
 ## CLI
 
 ```
-# Commands
 $ maren init
 $ maren watch [--once]
 $ maren serve [--port]
-
-# Commands provided by maren-s3
-$ maren upload <bucket>
-  [--themes]
-  [--images]
-  [--html]
-  [--dryrun]
 ```
 
 ## Folder structure
@@ -80,7 +73,7 @@ $ maren upload <bucket>
 
 /documents
 /draft
-/images
+/static
 /themes
 
 maren.json
@@ -88,7 +81,7 @@ package-lock.json
 package.json
 ```
 
-## Documents, Draft
+## Documents
 
 ```
 /documents
@@ -97,11 +90,23 @@ package.json
   /article-c/index.md
   index.md
   404.md
+```
 
+## Draft
+
+```
 /draft
   /not-ready-article-a/index.md
   /not-ready-article-b/index.md
   /not-ready-article-c/index.md
+```
+
+## Static
+
+```
+/static
+  /images
+    some-image.png
 ```
 
 ## Themes
@@ -133,7 +138,10 @@ package.json
   index.html
   404.html
 
-  /images
+  /static
+    /images
+      some-image.png
+
   /themes
     /default
       styles-MD5SUM.css

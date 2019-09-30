@@ -5,7 +5,7 @@ const gitignoreContent = [
   'node_modules/',
   '_build/',
   'draft/',
-  'images/',
+  'static/',
   'themes/',
   ''
 ].join('\n');
