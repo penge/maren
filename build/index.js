@@ -37,8 +37,13 @@ const reinit = async (cwd, theme) => {
   } catch (e) {}
 
   let { name, location, template, options } = theme;
-  let { styles, scripts } = options;
 
+  // if options is not defined, return theme as is
+  if (!options) {
+    return theme;
+  }
+
+  let { styles, scripts } = options;
   styles = hashAssets(cwd, name, location, styles);
   scripts = hashAssets(cwd, name, location, scripts);
   options = { styles, scripts };
