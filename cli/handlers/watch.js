@@ -2,11 +2,28 @@ const path = require('path');
 const fse = require('fs-extra');
 const chokidar = require('chokidar');
 
-const themes = require('../../themes');
 const build = require('../../build');
-const render = require('../../markdown/render');
+const { render, loadTheme, basicTheme } = require('maren-core');
 
 let count = 0;
+
+const getTheme = (cwd, themeName) => {
+  // Return basicTheme if:
+  // a) maren.json does not exist
+  // b) maren.json has theme but set to empty string
+  if (!themeName) {
+    return basicTheme;
+  }
+
+  const themeLocation = path.join(cwd, 'themes', themeName);
+  const theme = loadTheme(themeLocation);
+  if (!theme) {
+    console.log(`Unknown theme: ${themeName}`);
+    process.exit(1);
+  }
+
+  return theme;
+};
 
 /**
  * Watch *.md and produce *.html
@@ -15,7 +32,7 @@ module.exports = async argv => {
   const { cwd, theme: themeName, once } = argv;
   const persistent = once ? false : true;
 
-  let theme = themes(cwd, themeName);
+  let theme = getTheme(cwd, themeName);
   theme = await build.reinit(cwd, theme);
 
   const paths = [
@@ -49,7 +66,7 @@ module.exports = async argv => {
     }
   });
 
-  process.on('exit', code => {
+  process.on('exit', () => {
     if (!persistent) {
       console.log();
       console.log(`Finished! (${count} files)`);

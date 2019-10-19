@@ -14,7 +14,7 @@ module.exports = argv => {
   const app = express();
   app.use('/', express.static(root));
   app.use('/', express.static(draft));
-  app.use((req, res, next) => {
+  app.use((req, res) => {
     res.status(404).sendFile(notFound, err => {
       if (err) {
         res.status(404).send('404 Not Found');

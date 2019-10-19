@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 const cwd = process.cwd();
-const marenJson = require('../config').marenJson(cwd);
+const marenJson = require('../maren-json')(cwd);
+
 const plugins = require('../plugins')(cwd, marenJson, 'command');
 const yargs = require('yargs').scriptName('maren');
-const theme = marenJson.theme || 'default';
 
 // Handlers
 const init = require('./handlers/init');
@@ -48,6 +48,6 @@ for (const plugin of plugins) {
 
 yargs
   .demandCommand(1, 1, 'Command is required!')
-  .config({ cwd, theme })
+  .config({ cwd, theme: marenJson.theme })
   .help()
   .argv;
