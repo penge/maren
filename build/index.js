@@ -4,7 +4,7 @@ const md5File = require('md5-file');
 
 const hashAssets = (cwd, themeName, themeLocation, assets) => {
   if (!Array.isArray(assets)) {
-    return;
+    return [];
   }
 
   return assets.map(src => {
