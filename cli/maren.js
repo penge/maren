@@ -8,6 +8,7 @@ const yargs = require('yargs').scriptName('maren');
 
 // Handlers
 const init = require('./handlers/init');
+const build = require('./handlers/build');
 const watch = require('./handlers/watch');
 const serve = require('./handlers/serve');
 
@@ -18,8 +19,15 @@ const initCommand = [
   init
 ];
 
+const buildCommand = [
+  'build',
+  'build blog to _build directory',
+  {},
+  build
+];
+
 const watchCommand = [
-  'watch [--once]',
+  'watch',
   'watch markdown files for changes and create html',
   {},
   watch
@@ -39,6 +47,7 @@ const serveCommand = [
 
 yargs
   .command(...initCommand)
+  .command(...buildCommand)
   .command(...watchCommand)
   .command(...serveCommand);
 
