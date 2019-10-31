@@ -1,6 +1,6 @@
 {
   "name": "maren",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "theme based markdown renderer",
   "keywords": [
     "markdown",
@@ -14,7 +14,7 @@
   "engines": {
     "node": ">=10"
   },
-  "repository": "penge/maren",
+  "repository": "https://github.com/penge/maren",
   "homepage": "https://maren.io",
   "author": "Pavel Bucka",
   "license": "MIT",
