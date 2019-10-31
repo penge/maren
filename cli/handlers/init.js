@@ -17,7 +17,7 @@ module.exports = async argv => {
   console.log(`Initialize: ${cwd}`);
 
   await fse.copy(
-    path.join(__dirname, 'files', '.gitignore'),
+    path.join(__dirname, 'files', 'gitignore'),
     path.join(cwd, '.gitignore'));
 
   await fse.copy(
