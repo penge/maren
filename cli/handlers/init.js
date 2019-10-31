@@ -1,15 +1,6 @@
 const path = require('path');
 const fse = require('fs-extra');
 
-const gitignoreContent = [
-  'node_modules/',
-  '_build/',
-  'draft/',
-  'static/',
-  'themes/',
-  ''
-].join('\n');
-
 /**
  * Initialize <cwd> by creating:
  *
@@ -18,14 +9,20 @@ const gitignoreContent = [
  * draft
  * static
  * themes
+ * maren.json
  */
 module.exports = async argv => {
   const { cwd } = argv;
 
   console.log(`Initialize: ${cwd}`);
 
-  const gitignorePath = path.join(cwd, '.gitignore');
-  await fse.writeFile(gitignorePath, gitignoreContent);
+  await fse.copy(
+    path.join(__dirname, 'files', '.gitignore'),
+    path.join(cwd, '.gitignore'));
+
+  await fse.copy(
+    path.join(__dirname, 'files', 'maren.json'),
+    path.join(cwd, 'maren.json'));
 
   await fse.ensureDir(path.join(cwd, 'documents'));
   await fse.ensureDir(path.join(cwd, 'draft'));
