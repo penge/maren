@@ -16,9 +16,12 @@ module.exports = (cwd, marenJson, type) => {
         const pluginLocation = path.join(cwd, 'node_modules', pluginName);
         const plugin = require(pluginLocation);
         return plugin;
-      } catch (e) {
-        console.log(`Unknown plugin: ${pluginName}`);
-        process.exit(1);
+      } catch (err) {
+        if (err.code === 'MODULE_NOT_FOUND') {
+          console.log(`Unknown plugin: ${pluginName}`);
+          process.exit(1);
+        }
+        throw err;
       }
     });
   }
